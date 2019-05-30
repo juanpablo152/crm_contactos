@@ -1,0 +1,207 @@
+
+<!-- vista para el usuario cuando accede al componente de regisusuario,
+  para todos los componentes se utilizó el mismo diseño, columnas filas y un formulario para llevar un orden.
+-->
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+                      <h4 class="card-title">Registrar usuario</h4>
+                      <p class="card-category"> </p>
+                  </div>
+                 
+                  <div class="card-body">
+                      <form (submit)="saveNuevoUsuario($event)">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="ID" required  [(ngModel)]="regisusuario.iduser" name="iduser" id="iduser" type="number">
+                                    </mat-form-field>
+                                </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Identificación" required [(ngModel)]="regisusuario.identificacion" id="identificacion" name="identificacion" type="number">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                     
+                                        <select class="form-control" required style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                          <option value="" disabled selected>  Tipo de indentificación </option>
+                                          <option> Cédula </option>
+                                          <option> NIT </option>
+                                          <option> Cédula extranjeria </option>
+                                          <option> Pasaporte </option>
+                                        </select>
+                               
+                                    </div>
+                                   
+                                  </div>
+                              <div class="row">
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Nombre(s)" required id="nombres" [(ngModel)]="regisusuario.nombres" name="nombres" type="text">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Apellido(s):" required id="apellidos" [(ngModel)]="regisusuario.apellidos" name="apellidos" type="text">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                       
+                                  <select class="form-control" required ="regisusuario.idTipoUsuario" id="idTipoUsuario"  name="idTipoUsuario" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                        <option value="" disabled selected> Tipo de usuario </option>
+                                      <option value="1"> Gestor </option>
+                                      <option value="2"> Cliente </option>
+                            
+                                    </select>
+                              </div>
+
+                              </div>
+                          
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Correo electrónico" required id="correo" [(ngModel)]="regisusuario.correo" name="correo" type="email">
+                                  </mat-form-field>
+                                </div>
+                              
+                                <div class="col-md-4">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Contraseña" required id="contrasena" [(ngModel)]="regisusuario.contrasena" name="usuarios.contrasena" type="password">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput placeholder="Confirmar contraseña" required id="contrasena1" type="password">
+                                        </mat-form-field>
+                                      </div>
+                          </div>
+                          <div class="row">
+                                  <div class="col-md-4">
+                                           
+                                            <select class="form-control" required [(ngModel)]="regisusuario.estado" id="estado" name="estado" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                                  <option value="" disabled selected> Estado </option>
+                                                <option value="1"> Activo </option>
+                                                <option value="2"> Inactivo </option>
+                                                <option value="3"> Suspendido </option>
+                                                <option value="4"> Finalzada </option>
+                                                <option value="5"> En proceso </option>
+                                               
+                                              </select>
+                                        </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Fecha de nacimiento" required id="createdAt" [(ngModel)]="regisusuario.createdAt" name="createdAt" type="date">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Zona" [(ngModel)]="regisusuario.zona" required id="zona" name="zona" type="text">
+                                </mat-form-field>
+                              </div>
+                       
+                          </div>
+
+                          <div class="row">
+                          
+                                  <button mat-raised-button type="submit" class="btn btn-success pull-right">
+                                    Agregar
+                                </button>
+                                     
+                           <!--       <button mat-raised-button type="submit" class="btn btn-danger pull-right" style="background-color: #2e76d0">Guardar</button> -->
+                              
+                           <!--   <div class="col-md-12">
+                                <label>About Me</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                 </mat-form-field> -->
+                                  <!-- <div class="form-group">
+
+                                      <div class="form-group">
+                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                          <textarea class="form-control" rows="5"></textarea>
+                                      </div>
+                                  </div> 
+                              </div> -->
+                            </div>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+       
+      </div>
+  </div>
+</div>
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+            <h4 class="card-title mt-0"> Lista de usuarios </h4>
+       
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Identificación
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            apellido
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Eliminar
+                        </th>
+                        <th>
+                            Modificar Datos
+                        </th>
+                        
+                    </thead>
+                    <tbody *ngFor="let user of usuario | paginate: { itemsPerPage: 5, currentPage: pageActual } ">
+                        <tr>
+                            <td>
+                                {{ user.iduser }}
+                            </td>
+                            <td>
+                                {{ user.identificacion }}
+                            </td>
+                            <td>
+                                {{ user.nombres }}
+                            </td>
+                            <td>
+                                {{ user.apellidos }}
+                            </td>
+
+                            <td>
+                                {{ user.correo }}
+                            </td>
+                            <td>
+                                <button mat-raised-button class="btn btn-success btn-block" (click)="deleteUnUsuario(user.iduser)">
+                                      Eliminar
+                                </button>
+                            </td>
+                            <td>
+                                <button mat-raised-button class="btn btn-success btn-block" (click)="updateUnUsuario()">
+                                  Modificar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+               <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>

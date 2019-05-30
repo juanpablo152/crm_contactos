@@ -1,0 +1,64 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <img class="rounded mx-auto d-block" src="./assets/img/faces/logoU.png" alt="Card image cap" />
+          </div>
+          <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <!--<img class="img card-img-top" src="./assets/img/faces/logoU.png" alt="Card image cap" />-->
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Zona de ingreso a la aplicación</h4>
+                      <p class="card-category">
+                        Para acceder a los demás módulos del CRM debe ingresar con
+                        su usuario y contraseña
+                      </p>
+                  </div>
+                  <div class="card-body">
+                      <!-- <form>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="userDetail.correo" name="correo" placeholder="Usuario" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [(ngModel)]="userDetail.contrasena" name="contrasena" placeholder="Contraseña" type="password">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                            <button mat-raised-button type="submit" 
+                              (click)="authProccess()" class="btn btn-success pull-right">Ingresar</button> -->
+                      <form (submit)="authProccess($event)">
+                          <div class="row">
+                              <div class="col-md-12 form-group">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="correo" id="correo" placeholder="Usuario" type="text" class="form-control">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12 form-group">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput name="contrasena" id="contrasena" placeholder="Contraseña" type="password" class="form-control">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Ingresar</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3"></div>
+      </div>
+  </div>
+</div>

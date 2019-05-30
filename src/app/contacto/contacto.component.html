@@ -1,0 +1,217 @@
+<!-- vista para el usuario cuando accede al componente de contacto,
+  para todos los componentes se utilizó el mismo diseño, columnas filas y un formulario para llevar un orden.
+-->
+
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+                        <h4 class="card-title">Datos de contactos</h4>
+                        <p class="card-category"> </p>
+                    </div>
+                   
+                    <div class="card-body">
+                        <form (submit)="saveNuevoContacto($event)">
+                      <!--   <div class="row">
+                            <div class="col-md-12">
+                              <div class="alert alert-danger" role="alert" *ngIf="isError">
+                                 Revise los campos, Alguno de los campos presenta un error
+                                </div>
+                              </div>
+                          </div> --> 
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Identificación" required type="number" [(ngModel)]="contactos.id_clie" id="id_clie" name="id_clie" >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+  <select class="form-control"  [(ngModel)]="contactos.tip_id" name="tip_id" id="tip_id" required  style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                        <option disabled selected> Tipo de ID </option>
+                                      <option> Cédula </option>
+                                      <option> NIT </option>
+                                      <option> Cédula extranjeria </option>
+                                      <option> Pasaporte </option>
+                                    </select>
+                                      </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Nombre(s)" required name="nom_clie" id="nom_clie" [(ngModel)]="contactos.nom_clie" type="text">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Apellido(s)" required name="ape_clie" [(ngModel)]="contactos.ape_clie" type="text" id="ape_clie">
+                                    </mat-form-field>
+                                </div>
+                                </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Dirección" required name="dir_clie" [(ngModel)]="contactos.dir_clie" type="text" id="dir_clie">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Barrio" required name="bar_clie" [(ngModel)]="contactos.bar_clie" type="text" id="bar_clie">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput placeholder="Localidad" required name="loc_clie" id="loc_clie" [(ngModel)]="contactos.loc_clie" type="number" maxlength="10" >
+                                        </mat-form-field>
+                                      </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Correo electrónico" required name="email_clie" id="email_clie" [(ngModel)]="contactos.email_clie" type="email" >
+                                    </mat-form-field>
+                                  </div>
+                                
+                                  <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput placeholder="Teléfono" size="10" required name="tel_clie" id="tel_clie" [(ngModel)]="contactos.tel_clie" type="number" maxlength="10" >
+                                        </mat-form-field>
+                                      </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-4">
+                                             
+                                              <select class="form-control" [(ngModel)]="contactos.estC_clie" name="estC_clie" id="estC_clie" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                                    <option disabled selected> Estado civil </option>
+                                                  <option> Soltero </option>
+                                                  <option> Casado </option>
+                                                  <option> Unión libre </option>
+                                                  <option> Divorciado </option>
+                                                </select>
+                                          </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Fecha de nacimiento" required name="fec_clie" id="fec_clie" [(ngModel)]="contactos.fec_clie" type="date" >
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Lugar de nacimiento" required name="naci_clie" id="naci_clie" [(ngModel)]="contactos.naci_clie" type="text" >
+                                  </mat-form-field>
+                                </div>
+                         
+                            </div>
+                          
+                            <div class="row">
+                                    <button type="submit" mat-raised-button class="btn btn-success pull-right" >
+                                        Agregar
+                                    </button>
+                                <!--    <button mat-raised-button type="submit" class="btn btn-success pull-right" style="background-color: #2e76d0" >Guardar</button> -->
+                                    
+                                
+                             <!--   <div class="col-md-12">
+                                  <label>About Me</label>
+                                  <mat-form-field class="example-full-width">
+                                     <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                   </mat-form-field> -->
+                                    <!-- <div class="form-group">
+  
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                            <textarea class="form-control" rows="5"></textarea>
+                                        </div>
+                                    </div> 
+                                </div> -->
+                            </div> 
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+  </div>
+
+    
+        
+        
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+                    <h4 class="card-title mt-0"> Lista de usuarios </h4>
+               
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <th>
+                                    Identificación
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    apellido
+                                </th>
+                                <th>
+                                    Dirección
+                                </th>
+                                <th>
+                                    Teléfono
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Eliminar contacto
+                                </th>
+                                <th>
+                                    Modificar Datos
+                                </th>
+                                
+                            </thead>
+                            <tbody *ngFor="let persona of contacto | paginate: { itemsPerPage: 5, currentPage: pageActual } ">
+                                <tr>
+                                    <td>
+                                        {{ persona.id_clie }}
+                                    </td>
+                                    <td>
+                                        {{ persona.nom_clie }}
+                                    </td>
+                                    <td>
+                                        {{ persona.ape_clie }}
+                                    </td>
+                                    <td>
+                                        {{persona.dir_clie}}
+                                    </td>
+                                    <td>
+                                        {{ persona.tel_clie }}
+                                    </td>
+                                    <td>
+                                        {{ persona.email_clie }}
+                                    </td>
+                                    <td>
+                                        <button mat-raised-button class="btn btn-success btn-block" (click)="deleteUnContacto(persona.id_clie) ">
+                                          Eliminar
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button mat-raised-button class="btn btn-success btn-block" (click)="updateUnContacto() ">
+                                          Modificar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+
+       
+       

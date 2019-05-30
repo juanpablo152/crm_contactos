@@ -1,0 +1,33 @@
+INSTRUCCIONES PARA DESPLIEGUE EN SERVIDOR HEROKU
+a continuación se presentan los pasos para la instalación del proyecto, previa 
+verificación de funcionamiento para que no llegue a fallar el mismo.
+
+Importante que cuando se haga el cambio se comunique a los demás para que cada
+grupo esté de acuerdo y no dañar el proyecto.
+
+*** Iniciar sesión en heroku, suministre las credenciales dadas:
+heroku login
+
+**** Definir y conectar el repositorio remoto en Heroku:
+heroku git:remote -a <NOMBRE DE LA APP>
+
+**** Alista el archivo de cambios:
+git add -A .
+
+**** Aplicar la carga:
+git commit -m "v1"
+
+**** Colocar los archivos en Producción:
+git push -u heroku master
+
+**** Luego que haya terminado la instalación y despliegue de la aplicación
+para ver su funcionamiento, desde heroku lanzamos el siguiente comando:
+heroku open
+
+NOTA: para hacer uso de los archivos en el servidor de Heroku previo a la
+instalación se deben añadir los siguientes parámetros en el archivo "package.json"
+en los scripts:
+
+"start": "node server.js"
+"preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
+"postinstall": "ng build --aot --prod" */

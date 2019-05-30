@@ -1,0 +1,243 @@
+
+<!-- vista para el usuario cuando accede al componente de establecimiento,
+  para todos los componentes se utilizó el mismo diseño, columnas filas y un formulario para llevar un orden.
+-->
+
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+                      <h4 class="card-title">Registro de establecimiento</h4>
+                      <p class="card-category"> </p>
+                  </div>
+                 
+                  <div class="card-body">
+                      <form (submit)="saveNuevoEstablecimiento($event)">
+                         
+                           
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Código" type="number" name="id_est" id="id_est" [(ngModel)]="establecimientos.id_est" required>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                        <select class="form-control" required [(ngModel)]="establecimientos.tip_clie" id="tip_clie" name="tip_clie" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                          <option disabled selected>  Tipo de establecimiento </option>
+                                          <option>  Supermercado </option>
+                                          <option> Tienda </option>
+                                          <option> Almacen </option>
+                                        </select>                                
+                              </div>
+                                   
+                                  </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                   
+                                  <select class="form-control" required [(ngModel)]="establecimientos.est_clie" id="est_clie" name="est_clie" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                    <option value="0" disabled selected>  Estado comercial  </option>
+                                    <option>  activo </option>
+                                    <option> inactivo </option>
+                                  </select>                
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="ID dueño:" required name="id_clie" id="id_clie" [(ngModel)]="establecimientos.id_clie" type="number" required>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                       
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Nombre:" type="text"  name="nom_est" id="nom_est" [(ngModel)]="establecimientos.nom_est" required>
+                                </mat-form-field>
+                              </div>
+                              
+                              </div>
+                          
+                      
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Dirección" type="text" id="dir_est" [(ngModel)]="establecimientos.dir_est" name="dir_est" required>
+                                  </mat-form-field>
+                                </div>
+                              <div class="col-md-4">
+                                <select class="form-control" name="act_est" required id="act_est" [(ngModel)]="establecimientos.act_est" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                  <option value="0" disabled selected>  Actividad  </option>
+                                  <option> Ventas al por mayor </option>
+                                  <option>  Ventas al por menor </option>
+                                  <option>  Ventas al por mayor y por menor </option>
+                                </select>   
+                                </div>
+                              
+                                <div class="col-md-4">
+                                  <select class="form-control" name="cal_est" required id="cal_est" [(ngModel)]="establecimientos.cal_est" style="background-image: linear-gradient(to top, #0a19ca 1px, rgba(210, 210, 210, 0) 1px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)">
+                                    <option value="0" disabled selected>  Calificación  </option>
+                                    <option> 1 </option>
+                                    <option> 2 </option>
+                                    <option> 3 </option>
+                                    <option> 4 </option>
+                                    <option> 5 </option>
+                                  </select>  
+                                    </div>
+                         
+                          </div>
+                        <!---  <div class="row">
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Autorizaciones para envió de información y publicidad" type="text" readonly="readonly">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                         
+
+                                </div>
+                          </div>
+                        -->
+
+                        <div class="row">
+                          <div class="col-lg-8 col-md-12">
+                              <div class="card">
+                                  
+                        <div class="card-body">
+                            <h6> Autorizaciones para envió de información y publicidad </h6>
+                          <div class="tab-content">
+                              <div class="tab-pane active" id="profile">
+                        <table class="table">
+                              <tr>
+                                <td>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox"  name="auto_mail" checked [(ngModel)]="establecimientos.auto_mail" required>
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                              </td>
+                              <td> Por correo eléctronico  </td>
+                                  <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"  name="auto_tele" checked [(ngModel)]="establecimientos.auto_tele" required>
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td> Teléfonicamente  </td>
+                                 
+                              </tr>
+
+                      </table>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                        
+
+
+                      
+                   
+                   
+                          <div class="row">
+                           
+                                  <button mat-raised-button  class="btn btn-success pull-right" type="submit">
+                                    Agregar
+                                  </button>
+                                    
+                           <!--       <button mat-raised-button type="submit" class="btn btn-danger pull-right" style="background-color: #2e76d0">Guardar</button> -->
+                              
+                           <!--   <div class="col-md-12">
+                                <label>About Me</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                 </mat-form-field> -->
+                                  <!-- <div class="form-group">
+
+                                      <div class="form-group">
+                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                          <textarea class="form-control" rows="5"></textarea>
+                                      </div>
+                                  </div> 
+                              </div> -->
+                          </div> 
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+       
+      </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #425ad4, #425ad4)">
+            <h4 class="card-title mt-0"> Lista de establecimientos </h4>
+       
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="">
+                        <th>
+                            Código
+                        </th>
+                        <th>
+                            Nombre completo
+                        </th>
+                        <th>
+                            Dirección
+                        </th>
+                        <th>
+                            Calificación
+                        </th>
+                        <th>
+                            Eliminar
+                        </th>
+                        <th>
+                            Modificar Datos
+                        </th>
+                        
+                        
+                    </thead>
+                    <tbody *ngFor="let est of establecimiento | paginate: { itemsPerPage: 5, currentPage: pageActual } ">
+                        <tr>
+                            <td>
+                                {{ est.id_est }}
+                            </td>
+                            <td>
+                                {{ est.nom_est }}
+                            </td>
+                            <td>
+                                {{ est.dir_est }}
+                            </td>
+                            <td>
+                                {{ est.cal_est }}
+                            </td>
+                            <td>
+                                <button mat-raised-button class="btn btn-success btn-block" (click)="deleteUnEstablecimiento(est.id_est) ">
+                                  Eliminar
+                                </button>
+                            </td>
+                            <td>
+                                <button mat-raised-button class="btn btn-success btn-block" (click)="updateUnEstablecimiento() ">
+                                  Modificar
+                                </button>
+                            </td>
+                           
+                        </tr>
+                    </tbody>
+                </table>
+              <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>

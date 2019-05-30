@@ -1,0 +1,22 @@
+{ "users":
+    [
+        {
+        "idUser": 1,
+        "user": "fredy",
+        "password": "123456",
+        "idTipoUsuario": 1
+        },
+        {
+        "idUser": 2,
+        "user": "juan",
+        "password": "567890",
+        "idTipoUsuario": 1
+        },
+        {
+        "idUser": 3,
+        "user": "daniel",
+        "password": "24659563",
+        "idTipoUsuario": 2
+        }
+    ]
+}
